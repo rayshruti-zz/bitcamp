@@ -1,0 +1,21 @@
+#! /usr/bin/env python3
+import sys
+import numpy as np
+import pandas as pd
+
+def school_count(filename, column_name="profile/school"):
+    df = pd.read_csv(filename)
+    schools = df[column_name].dropna()
+    
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        print("Error: missing filename.")
+    elif len(sys.argv) == 2:
+        filename = sys.argv[1]
+        school_count(filename)
+    elif len(sys.argv) == 3:
+        filename = sys.argv[1]
+        column = sys.argv[2]
+        school_count(filename, column)
+    else:
+        print("Error: too many arguments.")
