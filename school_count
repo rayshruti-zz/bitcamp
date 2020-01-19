@@ -6,6 +6,7 @@ import pandas as pd
 def school_count(filename, column_name="profile/school"):
     df = pd.read_csv(filename)
     schools = df[column_name].dropna()
+    schools = schools.where(df["status/checkedIn"] == True)
     counts = schools.value_counts()
 
     display_num = int(input("How many schools to display? "))
